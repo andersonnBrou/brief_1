@@ -608,7 +608,7 @@ nav ul li a:hover{
    width: 272px;
    height: 225px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("../image/1.jpg") no-repeat top;
+   background: url("image/1.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
