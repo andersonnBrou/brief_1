@@ -1,8 +1,11 @@
+body {
+   min-width: 1317px;
+}
 
 *{
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: content-box
 }
 :root{
    ---ft: "roboto-regular", sans-serif;
@@ -104,6 +107,7 @@
     color: rgb(43, 40, 40);
 
  }
+ 
 
  nav ul{
     padding-top: 80px;
@@ -127,8 +131,15 @@ nav ul li a:hover{
     font-size: 11px;
     color: black;
 }
+
+.lien3{
+    top: 10px;
+    position: relative;
+
+}
 .lien4{
     font-weight: bold;
+   
 }
 
 
@@ -137,6 +148,8 @@ nav ul li a:hover{
    float: right;
    margin-top: -50px;
    margin-right: 50px;
+   position: relative;
+   top: 2px;
 }
 .lien5{
     font-weight: bold;
@@ -195,6 +208,11 @@ nav ul li a:hover{
     font-size: 12px;
     text-decoration: none;
  }
+ 
+ .lien7{
+   margin-right: 30px;
+ }
+
  .bloc5 li{
    display: inline-block;
    margin-left: 10px;
@@ -262,31 +280,229 @@ nav ul li a:hover{
     border-bottom: 3px solid rgb(201, 198, 198);
  }
 
+
+
+
  /* PREMIERE SECTION  */
 
-#premier{
-   margin-top: 20px;
-
+/* pour les flèches fonctionnelles */
+@keyframes tonext {
+   75% {
+     left: 0;
+   }
+   95% {
+     left: 100%;
+   }
+   98% {
+     left: 100%;
+   }
+   99% {
+     left: 0;
+   }
  }
- .car11{
+ 
+ @keyframes tostart {
+   75% {
+     left: 0;
+   }
+   95% {
+     left: -300%;
+   }
+   98% {
+     left: -300%;
+   }
+   99% {
+     left: 0;
+   }
+ }
+ 
+ @keyframes snap {
+   96% {
+     scroll-snap-align: center;
+   }
+   97% {
+     scroll-snap-align: none;
+   }
+   99% {
+     scroll-snap-align: none;
+   }
+   100% {
+     scroll-snap-align: center;
+   }
+ }
+
+ * {
+   box-sizing: border-box;
+   scrollbar-color: transparent transparent;    /* thumb and track color  */
+   scrollbar-width: 0px;
+ }
+ 
+ *::-webkit-scrollbar {
+   width: 0;
+ }
+ 
+ *::-webkit-scrollbar-track {
+   background: transparent;
+ }
+ 
+ *::-webkit-scrollbar-thumb {
+   background: transparent;
+   border: none;
+ }
+ 
+ * {
+   -ms-overflow-style: none;
+ }
+ 
+ ol, li {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .carousel {
+   position: relative;
+   padding-top: 5%;
+   margin-top: 40px;
+   
+ }
+ 
+ .carousel__viewport {
    position: absolute;
-   border-radius: 50%;
-   width: 25px;
-   height: 25px;
-   padding: 15px 0px 15px 0px;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   display: flex;
+   overflow-x: scroll;
+   counter-reset: item;
+   scroll-behavior: smooth;
+   scroll-snap-type: x mandatory;
+ }
+ 
+
+ .carousel__slide1{
+   position: relative;
+   flex: 0 0 100%;
+   width: 100%;
+   counter-increment: item;
+ }
+ .carousel__slide2{
+   position: relative;
+   flex: 0 0 100%;
+   width: 100%;
+   counter-increment: item;
+ }
+ .carousel__slide3{
+   position: relative;
+   flex: 0 0 100%;
+   width: 100%;
+   counter-increment: item;
+ }
+
+ .carousel__slide:before {
+   content: counter(item);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate3d(-50%,-40%,70px);
+   color: #fff;
+   font-size: 2rem;
+ }
+ 
+ .carousel__snapper {
+   position: absolute;
+   left: 0;
+   width: 100%;
+   scroll-snap-align: center;
+ }
+ 
+ @media (hover: hover) {
+   .carousel__snapper {
+     animation-name: tonext, snap;
+     animation-timing-function: ease;
+     animation-duration: 4s;
+     animation-iteration-count: infinite;
+   }
+   .carousel__slide:last-child .carousel__snapper {
+     animation-name: tostart, snap;
+   }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+   .carousel__snapper {
+     animation-name: none;
+   }
+ }
+ 
+ .carousel:hover .carousel__snapper,
+ .carousel:focus-within .carousel__snapper {
+   animation-name: none;
+ }
+
+ .carousel__navigation-list,
+ .carousel__navigation-item {
+   display: inline-block;
+ }
+
+ .carousel::before,
+ .carousel::after,
+ .carousel__prev,
+ .carousel__next {
+   position: absolute;
+   top: 0;
+   width: 5rem;
+   height: 4rem;
+   font-size: 0;
+   outline: 0;
+ }
+ 
+ .carousel::before,
+ .carousel__prev {
+   left: 0.1rem;
+ } 
+ 
+ .carousel::after,
+ .carousel__next {
+   right: 0.1rem;
+ }
+ 
+ .carousel::before,
+ .carousel::after {
+   content: '';
+   z-index: 1;
    background-color: rgb(255, 255, 255);
-}
+   background-size: 1.5rem 1.5rem;
+   background-repeat: no-repeat;
+   background-position: center center;
+   color: black;
+   font-size: 2.5rem;
+   line-height: 4rem;
+   text-align: center;
+   pointer-events: none;
+ }
+ 
+ .carousel::before {
+   background-image: url("../image/1223874-200.png");
+ }
+ 
+ .carousel::after {
+   background-image: url("../image/VlHnQcDcHW73dIIIsMDtudK8T38.svg");
+ }
+
+ /* ELEMENTS DU CAROUSSEL */
 
  .car1{
    width: 140px;
    height: 50px;
    border-radius: 50px;
    border: 1px solid #00809d;
-   margin-left: 30px;
+   margin-left: 78px;
  }
 .car1 .imj6{
    border-radius: 50px;
    padding-left: 5px;
+   
  
 }
 .car1 a .titr1{
@@ -317,7 +533,7 @@ nav ul li a:hover{
 .car2 .imj7{
    border-radius: 50%;
    padding-left: 5px;
-   padding-top: 5px; 
+   padding-top: 1px; 
 }
 .car2 a .gra2{
    margin-left: 10px;
@@ -341,8 +557,12 @@ nav ul li a:hover{
    border-radius: 50px;
    border: 1px solid #00809d;
  }
- 
-
+.car3 .imj8{
+   border-radius: 50%;
+   padding-left: 5px;
+   padding-top: 5px;  
+  margin-top:-5px;
+}
 .car3 a .titr3{
    position: absolute;
    margin-bottom: 10px;
@@ -371,6 +591,7 @@ nav ul li a:hover{
    border-radius: 50%;
    padding-left: 5px;
    padding-top: 5px;  
+   margin-top: -7px;
 }
 .car4 a .titr4{
    position: absolute;
@@ -394,12 +615,12 @@ nav ul li a:hover{
    height: 50px;
    border-radius: 50px;
    border: 1px solid #00809d;
-   /* margin-left: 15px; */
  }
 .car5 .imj10{
    border-radius: 50%;
    padding-left: 5px;
-   padding-top: 5px;  
+   padding-top: 5px; 
+   margin-top: -5px; 
 }
 .car5 a .titr5{
    position: absolute;
@@ -423,12 +644,12 @@ nav ul li a:hover{
    height: 50px;
    border-radius: 50px;
    border: 1px solid #00809d;
-   /* margin-left: 15px; */
 } 
 .car6 .imj11{
    border-radius: 50%;
    padding-left: 5px;
-   padding-top: 5px;  
+   padding-top: 5px; 
+   margin-top: -5px; 
 }
 .car6 a .titr6{
    position: absolute;
@@ -484,7 +705,8 @@ nav ul li a:hover{
 .car8 .imj13{
    border-radius: 50%;
    padding-left: 5px;
-   padding-top: 5px;  
+   padding-top: 5px;
+   margin-top: -2px;  
 }
 .car8 a .titr8{
    position: absolute;
@@ -505,7 +727,7 @@ nav ul li a:hover{
 }
 
 .car9{
-   width: 160px;
+   width: 100px;
    height: 50px;
    border-radius: 50px;
    border: 1px solid #00809d;
@@ -535,18 +757,10 @@ nav ul li a:hover{
    display: inline-flex;
    justify-content: space-around;
    width: 100%;
-   
-   /* margin-left: 35px; */
 }
-.car10{
-   position: absolute;
-   /* border-radius: 50%; */
-   width: 120px;
-   height: 25px;
-   padding: 15px 0px 15px 15px;
-   background-color: rgb(255, 255, 255);
-   margin-left: 1298px;
-}
+
+
+
 
 
 /* DEUXIEME SECTION */
@@ -561,7 +775,8 @@ nav ul li a:hover{
    font-size: 12px;
    color: rgb(35, 34, 34);
    text-decoration: none;
-   padding-left: 10px;
+   padding-left: 60px;
+ 
 }
 
 .link:hover{
@@ -573,7 +788,7 @@ nav ul li a:hover{
 
 #troisieme{
    margin-left: 10px;
-   margin-top: 150px;
+   margin-top: 160px;
    height: 100px;
 }
 
@@ -584,17 +799,21 @@ nav ul li a:hover{
 } 
 
 .tab{
-   width: 120px;
-   height: 22px;
+   width: 170px;
+   height: 30px;
    background-color: rgb(242, 242, 242);
    position: fixed;
    border: 1px solid rgb(149, 148, 148);
    text-decoration: none;
    color: #36b;
    bottom: 2px;
-   right: 5px;
+   right: 60px;
+   top: 760px;
    padding: 5px 0 0 5px;
+   text-align: justify;
 }
+
+
 
 .imj15{
    width: 30px;
@@ -608,7 +827,7 @@ nav ul li a:hover{
    width: 272px;
    height: 225px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/1.jpg") no-repeat top;
+   background: url("../image/1.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -624,6 +843,8 @@ nav ul li a:hover{
    padding-top: 100px;
    /* font-size: 5px; */
 }
+
+ /*debut de l'effet ombre interne noire*/
 .t-1{
    margin-left: 5px;
    color: white;
@@ -634,34 +855,42 @@ nav ul li a:hover{
 }
 .fond{
    width: 272px;
-   height: 78%;
+   height: 77%;
    opacity: 0;
    transition: all 0.3s;
    border-radius: 6px 6px 0 0;
 }
+ /*fin de l'effet ombre interne noire*/
+
+ /*texte en survole sur l'image / effet ombre noire*/
 .fond:hover{
    opacity: 1;
    transition: all 0.3s;
-   box-shadow: inset 0 -50px 25px -15px rgba(62, 60, 60, 0.583);
+  box-shadow: inset 0 -50px 25px -15px rgba(31, 22, 22, 0.583);
+   margin-top: 13px;
 }
 
+/*Grand titre en dessous des images*/
 .title{
-   width: 269px;
-   height: 40px;
+   width: 273px;
+   height: 60px;
    background-color: white;
-   margin-top: -50px;
+   margin-top: -40px;
    font-size: 12.2px;
    font-family: var(---ft);
-   border-radius: 0 0 5px 5px;
+   border-radius: 5 0 5px 5px;
    text-align: left;
    padding: 10px 0 0 5px;
    text-transform: capitalize;
+  
 }
+/* fin Grand titre en dessous des images*/
+
 #bloc8 a:nth-child(2) .cor1{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/2.jpg") no-repeat top;
+   background: url("../image/2.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -670,7 +899,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/3.jpg") no-repeat top;
+   background: url("../image/3.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -678,7 +907,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/4.jpg") no-repeat top;
+   background: url("../image/4.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -687,7 +916,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/5.jpg") no-repeat top;
+   background: url("../image/5.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -706,7 +935,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/6.jpg") no-repeat top;
+   background: url("../image/6.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -715,7 +944,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/7.jpg") no-repeat top;
+   background: url("../image/7.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -724,7 +953,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/8.jpg") no-repeat top;
+   background: url("../image/8.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -733,7 +962,7 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/9.jpg") no-repeat top;
+   background: url("../image/9.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
@@ -742,11 +971,12 @@ nav ul li a:hover{
    width: 272px;
    height: 226px;
    border: 1px solid rgba(128, 128, 128, 0);
-   background: url("image/10.jpg") no-repeat top;
+   background: url("../image/10.jpg") no-repeat top;
    background-size: cover;
    border-radius: 6px;
    box-shadow: 0px 0px 3px rgba(128, 128, 128, 0.483);
 }
+
 
 
 
